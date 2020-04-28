@@ -28,7 +28,7 @@ resource "google_compute_instance" "default" {
     foo = "bar"
   }
 
-  metadata_startup_script = "echo hi > /test.txt"
+  metadata_startup_script = "sudo apt-get update; sudo ap-get install -y nginx"
 
   service_account {
     scopes = ["userinfo-email", "compute-ro", "storage-ro"]

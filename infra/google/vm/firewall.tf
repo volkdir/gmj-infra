@@ -1,6 +1,6 @@
 resource "google_compute_firewall" "default" {
   name    = "test-firewall"
-  network = google_compute_network.default.name
+  network = data.google_compute_network.default.name
 
   allow {
     protocol = "icmp"
@@ -8,12 +8,11 @@ resource "google_compute_firewall" "default" {
 
   allow {
     protocol = "tcp"
-    ports    = ["80", "8080", "1000-2000"]
+    ports    = ["80", "443", "8080", "1000-2000"]
   }
-
-  source_tags = ["web"]
+source_ranges = ["0.0.0.0/0"]
 }
 
-resource "google_compute_network" "default" {
-  name = "test-network"
+data "google_compute_network" "default" {
+  name = "default"
 }
