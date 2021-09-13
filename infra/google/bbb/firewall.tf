@@ -13,7 +13,7 @@ resource "google_compute_firewall" "default" {
 
 allow {
     protocol = "udp"
-    ports    = ["10000"]
+    ports    = ["16384-32768"]
   }
 
 source_ranges = ["0.0.0.0/0"]
@@ -27,13 +27,10 @@ resource "google_compute_firewall" "ssh" {
     protocol = "tcp"
     ports    = ["22"]
   }
-  source_ranges = ["0.0.0.0/0"]
-//source_ranges = ["172.17.0.4/32"]
+source_ranges = ["172.17.0.4/32"]
 }
 
 
 data "google_compute_network" "default" {
-  name = "vpc-data-sbox-8a34b6d0"
-
-  //name = "vpc-shared-sbox-5b79b0aa"
+  name = "vpc-shared-sbox-5b79b0aa"
 }

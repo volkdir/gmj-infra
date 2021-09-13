@@ -1,5 +1,5 @@
 data "google_compute_image" "my_image" {
-  family  = "ubuntu-2004-lts"
+  family  = "ubuntu-1604-lts"
   project = "ubuntu-os-cloud"
 }
 
